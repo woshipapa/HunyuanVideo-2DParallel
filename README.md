@@ -52,6 +52,12 @@ For a **720p, 49 fps video** processed with torch.checkpoint, we observed signif
 - SP=4: By setting SP=4, the activation values during forward propagation dropped to 3GB, achieving a substantial memory reduction.
 This demonstrates the efficiency of sequence parallelism in managing memory usage, making it easier to process larger videos without running into memory bottlenecks.
 
+## References
+- [HunyuanVideo](https://github.com/Tencent/HunyuanVideo): The official repository for Tencent's HunyuanVideo, a foundation for multi-modal video processing.
+- [Diffusers Library](https://github.com/huggingface/diffusers): The original library on which `transformer_hunyuan_video.py` is based.
+- [Accelerate Library](https://github.com/huggingface/accelerate): The Hugging Face library for distributed training.
+- [DeepSpeed](https://github.com/microsoft/deepspeed): A deep learning optimization library for scaling models efficiently.
+
 
 ## Contribution
 Feel free to fork this repository and submit pull requests with improvements or bug fixes.
