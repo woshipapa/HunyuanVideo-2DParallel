@@ -45,6 +45,13 @@ Moreover, in the accelerate pipeline, the **DeepSpeedEngine (wrapped model)** is
 
 - ParallelManager: This class wraps the DeepSpeedEngine and handles the communication and synchronization tasks required for efficient distributed processing.
 
+## Implementation Results
+For a **720p, 49 fps video** processed with torch.checkpoint, we observed significant improvements in memory usage:
+
+- SP=1: During forward propagation, the activation values used up to 15GB of memory.
+- SP=4: By setting SP=4, the activation values during forward propagation dropped to 3GB, achieving a substantial memory reduction.
+This demonstrates the efficiency of sequence parallelism in managing memory usage, making it easier to process larger videos without running into memory bottlenecks.
+
 
 ## Contribution
 Feel free to fork this repository and submit pull requests with improvements or bug fixes.
