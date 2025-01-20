@@ -21,4 +21,31 @@ transformer_hunyuan_video.py is an extension of the original Diffusers library, 
 The environment for this project is provided through a Docker image, ensuring that all dependencies are encapsulated for ease of deployment and consistency across different systems. The image is still being uploaded and will be available for use shortly.
 
 
+## Accelerate and Deepspeed Support
+This project supports integration with both accelerate and deepspeed for distributed training and inference.
+
+- Data Parallelism: The **data_parallel_size** is configurable, allowing for parallel processing across multiple devices, speeding up training and inference.
+
+- Sequence Parallelism: The **sequence_parallel_size** is also supported, enabling fine-grained parallelism across different sequence lengths and improving the- handling of large-scale data.
+
+### BatchSamplerShard for DP+SP
+A key modification in the accelerate framework is the enhancement of the BatchSamplerShard. This custom sampler now supports distributed data sampling for both Data Parallelism (DP) and Sequence Parallelism (SP). Specifically:
+
+- DP+SP Distributed Sampling: This version ensures that data within the same SP group is consistent across devices. Previously, the original implementation only supported independent data on each device. With this change, all devices within the same SP group will sample the same batch, maintaining data consistency across the group.
+
+
+## DeepSpeed Integration
+In this project, DeepSpeed is further integrated through the mesh_device parameter used in deepspeed_initialize. This allows the initialization of device_mesh and the retrieval of the ProcessGroup, which is essential for handling distributed communication during training and inference.
+
+- device_mesh: Initialized using the **mesh_device** parameter in **deepspeed_initialize**, enabling efficient communication across multiple devices.
+
+- ProcessGroup: Once the **device_mesh** is initialized, the ProcessGroup is obtained, which is crucial for the distributed communication layer in training.
+
+Moreover, in the accelerate pipeline, the **DeepSpeedEngine (wrapped model)** is extracted and encapsulated into a **ParallelManager** class, which simplifies the management of parallel tasks.
+
+- ParallelManager: This class wraps the DeepSpeedEngine and handles the communication and synchronization tasks required for efficient distributed processing.
+
+
+## Contribution
+Feel free to fork this repository and submit pull requests with improvements or bug fixes.
 
