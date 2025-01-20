@@ -12,9 +12,9 @@ transformer_hunyuan_video.py is an extension of the original Diffusers library, 
 
 - Dual-stream SP: Text and video inputs are concatenated as soon as they enter the block. This combined input is then used for the joint computation of the QKV matrices within the attention mechanism. This method allows for a more integrated representation of both modalities, leveraging their combined features throughout the attention process.
 - Extended Utility Functions: Utilizes a custom utils library for distributed operations, including:
--- Padding: Ensures input consistency across different tensor sizes.
--- All2all: Distributes data across multiple devices or workers.
--- Split and Gather: Efficient data splitting and collection operations, useful for parallel processing.
+  -  Padding: Ensures input consistency across different tensor sizes.
+  -  All2all: Distributes data across multiple devices or workers.
+  -  Split and Gather: Efficient data splitting and collection operations, useful for parallel processing.
 
 
 
