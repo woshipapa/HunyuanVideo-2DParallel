@@ -1,5 +1,5 @@
 # HunyuanVideo3DTransformer-with-Sequence-and-Data-Parallelism
-This repository provides an implementation of HunyuanVideoTransformer with both single-stream and dual-stream architectures. It incorporates sequence parallelism using Ulysses' method and data parallelism based on a customized framework of accelerate and deepspeed. The implementation supports both pre-training and inference stages.
+This repository provides an implementation of HunyuanVideoTransformer with both single-stream and dual-stream architectures. It incorporates sequence parallelism using Ulysses' method and data parallelism based on a customized framework of accelerate and deepspeed. The implementation supports <span style="color: yellow;">both pre-training and inference stages.</span>
 
 
 
@@ -16,6 +16,9 @@ transformer_hunyuan_video.py is an extension of the original Diffusers library, 
   -  All2all: Distributes data across multiple devices or workers.
   -  Split and Gather: Efficient data splitting and collection operations, useful for parallel processing.
 
+
+## Environment
+The environment for this project is provided through a Docker image, ensuring that all dependencies are encapsulated for ease of deployment and consistency across different systems. The image is still being uploaded and will be available for use shortly.
 
 
 
